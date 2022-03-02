@@ -4,14 +4,15 @@ const jwt = require('jsonwebtoken');
 app.get('/', (req,res)=>{
     res.send('Hello World!');
 
-    var token = jwt.sign({
-        test: "test"
-    },
-    "secretkey",
+    var token = jwt.sign(
     {
-        subject: "PangYeon jwtToken",
-        expiresIn: '60m', 
-        issuer: "pangyeon"
+        test: "test" //payload
+    },
+    "secretkey", //secreate key
+    {
+        subject: "PangYeon jwtToken",  // opriotns
+        expiresIn: '60m',              // 토큰에 대한 여러가지 정보를 설정한다.
+        issuer: "pangyeon"             // expiresin, issuerm, subject
     }
     );
     console.log("토큰생성 :", token)
